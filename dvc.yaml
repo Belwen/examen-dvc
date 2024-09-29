@@ -1,0 +1,20 @@
+stages:
+  prepare:
+    cmd: python3 src/data/split_data.py
+    deps:
+    - data/raw_data
+    - src/data/split_data.py
+    outs:
+    - data/processed_data
+  gridsearch:
+    cmd: python3 src/models/gridsearch.py
+    deps:
+    - data/processed_data/
+    - src/models/gridsearch.py
+    outs:
+    - models/best_params.pkl
+  train:
+    cmd: '- data/processed_data/ -d models/best_params.pkl -o models/trained_model.joblib
+      python3 src/models/train_model.py'
+    deps:
+    - src/models/train_model.py
