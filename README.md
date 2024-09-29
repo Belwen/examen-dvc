@@ -3,18 +3,25 @@ Dans ce dépôt vous trouverez l'architecture proposé pour mettre en place la s
 
 ```bash       
 ├── examen_dvc          
-│   ├── data       
-│   │   ├── processed      
-│   │   └── raw       
-│   ├── metrics       
-│   ├── models      
-│   │   ├── data      
-│   │   └── models        
-│   ├── src       
-│   └── README.md.py       
+│   ├── data
+│   │   ├── predictions       <-  Predictions made by predict_model.py
+│   │   ├── processed_data    <-  Split and scaled datasets made by split_data.py
+│   │   └── raw_data          <-  Original data
+│   │     
+│   ├── metrics               <-  Model score computed by preidct_model.py (R2 and MSE)  
+│   │
+│   ├── models                <-  Pickled best parameters and joblib model trained and saved
+│   │
+│   ├── src                    
+│   │   ├── data              <-  Scripts to split data
+│   │   │   ├── check_structure.py
+│   │   │   └── split_data.py
+│   │   └── models            <-  Scripts to find the best parameters, train models and make predictions
+│   │       ├── gridsearch.py
+│   │       ├── train_model.py
+│   │       └── predict_model.py
+│   └── README.md       
 ```
-N'hésitez pas à rajouter les dossiers ou les fichiers qui vous semblent pertinents.
 
-Vous devez dans un premier temps *Fork* le repo et puis le cloner pour travailler dessus. Le rendu de cet examen sera le lien vers votre dépôt sur DagsHub. Faites attention à bien mettre https://dagshub.com/licence.pedago en tant que colaborateur avec des droits de lecture seulement pour que ce soit corrigé.
 
-Vous pouvez télécharger les données à travers le lien suivant : https://datascientest-mlops.s3.eu-west-1.amazonaws.com/mlops_dvc_fr/raw.csv.
+
